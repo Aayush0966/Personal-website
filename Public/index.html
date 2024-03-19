@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+     <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Bootstrap Datepicker CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
+
+</head>
+<body class="body">
+    
+    <button class="toggle-sidebar-btn" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </button>
+   
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Session Expired</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="popupMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="redirectToLogin()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="welcome">Welcome</div>
+        <div class="user-info">
+            <div id="userPhotoContainer">
+                <img id="userPhoto" src="" alt="User Photo">
+                <div id="photoOptions" class="photo-options">
+                    <ul>
+                        <li id="uploadPhotoOption">Upload New Photo</li>
+                        <li id="removePhotoOption">Remove Photo</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="Uname">User Name</div>
+        </div>
+        
+        
+        <hr>
+        <ul>
+            <li class="section active" data-section="dashboard">Dashboard</li>
+            <li class="section" data-section="profile">Profile</li>
+            <li class="section" data-section="calendar">Calendar</li>
+            <li class="section" data-section="finance">Finance</li>
+            <li class="section" data-section="todo">To-Do List</li>
+            <li class="section" data-section="yt" style="display: none;">YouTube Tools</li>
+        </ul>
+        <div id="logoutButtonContainer">
+            <button id="logoutButton">Logout</button>
+        </div>
+    </div>
+
+    <div id="content" class="content">
+        <div class="dashboard section-content"  id="dashboard" style="display: none;">
+            <h1>Dashboard</h1>
+            <div class="progress-stats">
+                <p class="progress-text">Progress Stats</p>
+                <div class="progress-graph">
+                    <div class="progress-marker"></div>
+                </div>
+            </div>
+        </div>
+               <div class="profile section-content" id="profile">
+            <h1>Profile</h1>
+            <div class="user-details">
+                <h2>User Details</h2>
+                <p><strong>Name:</strong> <span id="name"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span> <a href="#" class="change-email-link">Change email?</a></p>
+
+
+                <p><strong>Password:</strong> *********</p>
+                <a href="#" class="change-password">Change password?</a>
+            </div>
+            <div id="email-change-modal" class="modal">
+    <div class="modal-content">
+        <button class="close">&times;</button>
+        <form id="email-form">
+            <h2>Change Email</h2>
+            <input type="email" id="new-email" placeholder="Enter New Email" required>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div id="password-change-modal" class="modal">
+    <div class="modal-content">
+        <button class="close">&times;</button>
+        <form id="password-form">
+            <h2>Change Password</h2>
+            <input type="password" id="current-password" placeholder="Current Password" required><br>
+            <input type="password" id="new-password" placeholder="New Password" required><br>
+            <input type="password" id="confirm-new-password" placeholder="Confirm New Password" required><br>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</div>
+
+        
+            <div class="projects">
+                <h2>Projects</h2>
+                <ul id="projectList">
+                    <li>Project 1</li>
+                    <li>Project 2</li>
+                    <li>Project 3</li>
+                </ul>
+                <input type="text" id="newProjectInput" placeholder="Enter project name">
+                <button id="addProjectButton">Add Project</button>
+            </div>
+            
+            <div class="social-links">
+                <h2>Social Links</h2>
+                <ul>
+                    <li><a href="https://www.facebook.com" class="social-link" data-social-media="fb"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com" class="social-link" data-social-media="instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://twitter.com" class="social-link" data-social-media="twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com" class="social-link" data-social-media="linkedin"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            
+            <!-- Context menu -->
+            <div id="context-menu" class="context-menu">
+                <ul>
+                    <li id="editMenuItem">Edit</li>
+                   
+                </ul>
+            </div>
+            <div id="editLinkInputContainer" style="display: none;">
+                <input type="text" id="editLinkInput" placeholder="Enter new link">
+                <button id="submitEditButton">Submit</button>
+            </div>
+            <div class="delete-account">
+                <button id="deleteAccountButton">Delete Account</button>
+            </div>
+        
+            <!-- Confirmation dialog -->
+            <div id="confirmation-dialog" class="confirmation-dialog">
+                <div class="confirmation-dialog-content">
+                    <p>Are you sure you want to delete your account?</p>
+                    <button id="confirm-delete">Yes</button>
+                    <button id="cancel-delete">No</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="calendar section-content" id="calendar">
+            <div class="calendar-container">
+                <h1>Calendar</h1>
+                <div id="jquery-calendar"></div>
+               
+                <div class="new-event">
+                    <h2>New Event</h2>
+                    <hr>
+                    <form id="add-event-form">
+                        <label for="event-title">Title:</label>
+                        <input type="text" id="event-title" name="event-title" required>
+                        <label for="event-date">Date:</label>
+                        <input type="text" id="event-date" name="event-date" required>
+                        <label for="event-time">Time:</label>
+                        <input type="text" id="event-time" name="event-time">
+                        <button type="submit">Add Event</button>
+                    </form>
+                </div>
+                
+                <div class="upcoming-events">
+                    <h2>Upcoming Events</h2>
+                    <hr>
+                    
+                    <ul id="upcoming-events-list">
+                        <!-- List of upcoming events will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Add a hidden confirmation dialog to the HTML -->
+<div id="confirm-dialog" class="confirm-dialog">
+    <div class="confirmation-dialog-content">
+      <p>Are you sure you want to delete this event?</p>
+      <button id="confirm-del">Yes</button>
+      <button id="cancel-del">Cancel</button>
+    </div>
+  </div>
+  
+        
+        
+  <div class="finance section-content" id="finance">
+    <div class="finance-container">
+        <h1>Finance</h1>
+        <hr> <!-- Line separator -->
+        <div class="monthly-summary">
+            <h2 id="current-month-summary">CurrentMonth Summary</h2>
+            <button id="prev-month" class="btn">&lt; Prev Month</button>
+            <button id="next-month" class="btn">Next Month &gt;</button>
+
+            <p>Total Expenses: <span id="total-expenses">$0</span></p>
+            <p>Total Income: <span id="total-income">$0</span></p>
+        </div>
+        <div class="add-transaction">
+            <h2>Add Transaction</h2>
+            <form id="transaction-form">
+                <label for="transaction-type">Type:</label>
+                <select id="transaction-type">
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <label for="transaction-amount">Amount:</label>
+                <input type="number" id="transaction-amount" name="transaction-amount" required>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div class="transaction-history">
+            <h2>Transaction History</h2>
+            <ul id="transaction-list">
+                <!-- Transaction history will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="todo section-content" id="todo">
+    <div class="todo-container">
+        <h1>To-Do List</h1>
+        <hr>
+        <!-- Add Task Form -->
+        <form class="add-task-form" id="add-task-form">
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" required>
+            <button type="submit">Add Task</button>
+        </form>
+        
+        <!-- To Do Section -->
+        <div class="todo-section">
+            <h2>To Do</h2>
+            <ul class="todo-list">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- In Progress Section -->
+        <div class="in-progress-section">
+            <h2>In Progress</h2>
+            <ul class="in-progress-list">
+                <!-- In progress tasks will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- Completed Section -->
+        <div class="completed-section">
+            <h2>Completed</h2>
+            <ul class="completed-list">
+                <!-- Completed tasks will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+        
+        
+<div class="popup-container" style="display: none;">
+    <div class="popup-content">
+        <h2 id="popupTitle">Music Downloader</h2> <!-- Add this line -->
+
+        <input type="text" id="linkInput" placeholder="Enter YouTube link">
+        <p id="pleaseWaitMessage" style="display: none;">Please wait...</p>
+        <button class="submitButton" id="submitButton">Submit</button>
+        <div id="videoInfo" style="display: none;">
+            <img id="videoThumbnail" src="" alt="Video Thumbnail">
+            <h3 id="videoTitle"></h3>
+            
+            
+            <a id="downloadButton" class="download-button" href="" download>Download</a>
+            <button id="downloadAnotherButton">Download Another</button>
+        </div>
+        <span id="closeButtonPopup" class="close-button">&times;</span>
+    </div>
+</div>
+
+<div class="yt section-content" id="yt" style="display: none;">
+    <h1>YouTube Tools</h1>
+    
+    <div class="yt-music-downloader">
+        <h2>Yt Music Downloader</h2>
+        <button id="openMusicPopup" class="open-popup-button" >Open</button>
+    </div>
+
+    <div class="yt-video-downloader">
+        <h2>Yt Video Downloader</h2>
+        <button id="openVideoPopup" class="open-popup-button" >Open</button>
+    </div>
+
+   
+</div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Datepicker JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script src="js/frontend.js">
+
+    </script>
+  <script>
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.querySelector('.toggle-sidebar-btn');
+    sidebar.classList.toggle('active');
+    toggleBtn.classList.toggle('active');
+}
+
+const sections = document.querySelectorAll('.section');
+
+sections.forEach(section => {
+    section.addEventListener('click', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.querySelector('.toggle-sidebar-btn');
+        sidebar.classList.remove('active');
+        toggleBtn.classList.remove('active');
+    });
+});
+
+
+
+</script>
+
+
+</body>
+</html>

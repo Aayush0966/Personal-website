@@ -1,0 +1,42 @@
+[dev]
+  port = 8888
+  publish = "Public"
+
+[build]
+  command = "npm install @google-cloud/storage"
+  directory = "Public/.netlify/functions/"
+  edge_functions = "Public/.netlify/edge-functions/"
+
+[[redirects]]
+  from = "/"
+  to = "/login"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index"
+  to = "/home"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/home"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/home"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/login.html"
+  to = "/login"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200

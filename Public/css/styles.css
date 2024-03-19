@@ -1,0 +1,1488 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex; /* Use flexbox for overall layout */
+}
+
+.toggle-sidebar-btn.active ~ .sidebar {
+    width: 200px;
+}
+
+.sidebar {
+    width: 0;
+    min-height: 100vh;
+    background-color: lightseagreen;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .welcome {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar .user-info {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* Add a border for separation */
+}
+
+.sidebar .user-info #userPhotoContainer {
+    position: relative; /* Make the container relative to position the options */
+}
+
+.sidebar .user-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer; /* Add pointer cursor to indicate clickability */
+}
+
+.sidebar .user-info .photo-options {
+    display: none; /* Hide the options by default */
+    position: absolute;
+    top: 110px; /* Position below the photo */
+    left: 50%; /* Position in the center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.sidebar .user-info .photo-options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .user-info .photo-options ul li {
+    cursor: pointer; /* Add pointer cursor to indicate clickability */
+    padding: 8px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.sidebar .user-info .photo-options ul li:hover {
+    background-color: #f5f5f5; /* Add hover effect */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background-color: #555;
+}
+
+.content {
+    flex-grow: 1; /* Content area grows to fill remaining space */
+    padding: 20px;
+}
+
+.toggle-sidebar-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+.toggle-sidebar-btn.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.toggle-sidebar-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.toggle-sidebar-btn.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+}
+
+
+@media (max-width: 745px) {
+    body {
+        flex-direction: column; /* Change to column layout on mobile screens */
+    }
+
+    .sidebar {
+          position: static;
+        min-height: 10vh;
+        display: none;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease; /* Adjust transition duration */
+    }
+
+    .sidebar.active {
+        display: flex;
+        transform: translateX(0%);
+    }
+    .toggle-sidebar-btn.active ~ .sidebar {
+        width: 100%;
+    }
+    
+}
+
+
+
+
+
+/*********************************Dashboard Section**************************************/
+
+.dashboard {
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 40px 0 0 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added box shadow */
+    padding: 30px;
+  
+}
+
+.dashboard h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.progress-stats {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-graph {
+    height: 200px;
+    background: linear-gradient(to top, #91a6ff 0%, #16222a 100%);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.progress-marker {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #4caf50;
+}
+
+.progress-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+/******************************Profile Section***********************************/
+
+
+
+.profile {
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 40px 0 0 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+.user-details .user-photo {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.user-details {
+    margin-bottom: 30px;
+}
+
+.user-details h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.user-details p {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.user-details strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-details a {
+
+    text-decoration: none;
+}
+
+.user-details a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: red;
+}
+
+.change-email{
+    font-size: 14px;
+    color: red;
+}
+.projects {
+    margin-bottom: 30px;
+}
+
+.projects h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.projects ul {
+    list-style: none;
+    padding: 0;
+}
+
+.projects ul li {
+    margin-bottom: 10px;
+}
+
+.projects button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.projects button:hover {
+    background-color: #45a049;
+}
+.social-links {
+    margin-bottom: 30px;
+}
+
+.social-links h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.social-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links ul li:last-child {
+    margin-right: 0;
+}
+
+.social-links ul li a {
+    color: #333;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-links ul li a:hover {
+    color: #4caf50;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    font-family: Arial, sans-serif;
+    min-width: 120px; /* Adjust width as needed */
+}
+
+.context-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.context-menu ul li:hover {
+    background-color: #999494;
+}
+
+/* Separators */
+.context-menu ul li.separator {
+    border-top: 1px solid #ccc;
+    margin: 4px 0;
+}
+
+/* Disabled items */
+.context-menu ul li.disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+/* Styles for the Delete Account button */
+.delete-account {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#deleteAccountButton {
+    background-color: #ff6347; /* Red color */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Padding around the button text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+#deleteAccountButton:hover {
+    background-color: #dc143c; /* Darker red color on hover */
+}
+
+#deleteAccountButton:focus {
+    outline: none; /* Remove focus outline */
+}
+
+#deleteAccountButton:active {
+    transform: translateY(1px); /* Add slight downward movement when clicked */
+}
+
+/* Styles for the confirmation dialog */
+.confirmation-dialog {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 9999; /* Ensure it's on top of other elements */
+}
+
+.confirmation-dialog-content {
+    background-color: #fff; /* White background */
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.confirmation-dialog-content p {
+    margin-bottom: 20px;
+}
+
+.confirmation-dialog-content button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.confirmation-dialog-content button#confirm-delete {
+    background-color: #dc143c; /* Red color */
+    color: #fff;
+}
+
+.confirmation-dialog-content button#confirm-delete:hover {
+    background-color: #b22222; /* Darker red color on hover */
+}
+
+.confirmation-dialog-content button#cancel-delete {
+    background-color: #ccc; /* Light gray color */
+    color: #333;
+}
+
+.confirmation-dialog-content button#cancel-delete:hover {
+    background-color: #bbb; /* Slightly darker gray color on hover */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(255 255 255);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+}
+
+.close {
+    color: #777;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Email change modal */
+#email-change-modal {
+    padding: 20px;
+}
+
+#new-email {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#email-form .submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    font-size: 16px;
+}
+
+#email-form .submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Password change box */
+.password-change-box {
+    display: none;
+    padding: 20px;
+}
+
+.password-change-box .modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+}
+
+.password-change-box .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.password-change-box input[type="password"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.password-change-box .submit-button {
+    display: block;
+    width: calc(100% - 40px);
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.password-change-box .submit-button:hover {
+    background-color: #45a049;
+}
+
+.password-change-box .close {
+    color: #777;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#password-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+
+    border-radius: 8px;
+    
+}
+
+#password-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+#password-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#password-form .submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+#password-form .submit-button:hover {
+    background-color: #45a049;
+}
+
+
+
+/************************Calender Section*********************/
+.calendar-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added box shadow */
+    padding: 30px;
+    margin: 40px 0 0 40px; /* Added margin bottom for spacing */
+}
+#calendar{
+    font-family: 'Roboto', sans-serif;
+}
+.red {
+    background-color: red !important;
+    color: white !important;
+}
+/* CSS for the marked dates */
+.datepicker table td.red {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    border-radius: 50%; /* Rounded border */
+}
+
+.datepicker table td.red:hover {
+    background-color: #d32f2f; /* Darker red background color on hover */
+}
+
+.datepicker table td.red.active {
+    background-color: #e57373; /* Lighter red background color when active */
+}
+/* CSS for today's date */
+
+
+
+/* CSS for the confirmation dialog */
+.confirm-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px; /* Increase padding for larger size */
+  z-index: 1000;
+}
+
+.confirm-dialog-content {
+  text-align: center;
+}
+
+.confirm-dialog button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-dialog button#cancel-delete {
+  background-color: #2ecc71; /* Green color for cancel button */
+}
+
+.confirm-dialog button:hover {
+  background-color: #c0392b; /* Darker red color on hover */
+}
+
+
+.new-event {
+    margin-top: 20px;
+}
+
+.new-event h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.new-event label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.new-event input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.new-event button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.new-event button:hover {
+    background-color: #45a049;
+}
+
+.upcoming-events {
+    margin-top: 20px;
+}
+
+.upcoming-events h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.upcoming-events ul {
+    list-style: none;
+    padding: 0;
+}
+
+.upcoming-events ul li {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.upcoming-events ul li button.delete-event {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the distance from the right edge */
+    transform: translateY(-50%);
+    background-color: #e74c3c; /* Red color */
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Adjust padding for better appearance */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Bold font weight */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+  
+.upcoming-events ul li button.delete-event:hover {
+    background-color: #c0392b; /* Darker red color on hover */
+}
+  
+.upcoming-events ul li strong {
+    color: #333;
+}
+
+.upcoming-events ul li span {
+    color: #777;
+}
+
+
+/**************************To-Do-list***************************/
+.todo-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 40px 0 0 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.todo-section, .in-progress-section, .completed-section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.todo-section h2, .in-progress-section h2, .completed-section h2 {
+    font-size: 20px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+}
+
+.todo-list, .in-progress-list, .completed-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todo-list li, .in-progress-list li, .completed-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Roboto', sans-serif;
+}
+
+.todo-list li:last-child, .in-progress-list li:last-child, .completed-list li:last-child {
+    border-bottom: none;
+}
+
+.todo-list li button, .in-progress-list li button, .completed-list li button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right; /* Shift buttons to the right */
+}
+/* For small screens (e.g., mobile devices) */
+@media screen and (max-width: 600px) {
+    .todo-list li button,
+    .in-progress-list li button,
+    .completed-list li button {
+        padding: 3px 8px; /* Reduce padding */
+        font-size: 12px; /* Reduce font size */
+    }
+}
+
+.todo-list li button:hover, .in-progress-list li button:hover, .completed-list li button:hover {
+    background-color: #c82333;
+}
+
+.add-task-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.add-task-form label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 5px;
+}
+
+.add-task-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.add-task-form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-task-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+
+/********************************Finance Section**************************/
+/* Style for the finance section */
+#finance {
+    background-color: #f4f4f4; /* Light grey background */
+    padding: 20px;
+    margin: 40px 0 0 40px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Style for the monthly summary */
+.monthly-summary {
+    background-color: #fff; /* White background */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+}
+
+.monthly-summary h2 {
+    color: #333; /* Dark grey heading color */
+    margin-bottom: 10px;
+}
+
+/* Style for the transaction history */
+.transaction-history {
+    background-color: #fff; /* White background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+}
+
+.transaction-history h2 {
+    color: #333; /* Dark grey heading color */
+    margin-bottom: 10px;
+}
+
+/* Style for the transaction list */
+#transaction-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0;
+    margin: 0;
+}
+
+#transaction-list li {
+    margin-bottom: 5px; /* Add some spacing between transaction items */
+}
+
+/* Style for the add transaction form */
+.add-transaction {
+    background-color: #fff; /* White background */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+}
+
+.add-transaction h2 {
+    color: #333; /* Dark grey heading color */
+    margin-bottom: 10px;
+}
+
+.add-transaction label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Light grey label color */
+}
+
+.add-transaction input[type="number"],
+.add-transaction select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.add-transaction button[type="submit"] {
+    background-color: #007bff; /* Blue submit button */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-transaction button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for the buttons */
+.btn {
+    background-color: #007bff; /* Blue button */
+    color: #fff; /* White text color */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/***********************YT-TOOLS************************/
+#yt {
+    padding: 20px;
+     margin: 40px 0 0 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.yt h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.yt h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.yt .yt-music-downloader,
+.yt .yt-video-downloader,
+.yt .yt-playlist-downloader {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.yt .yt-music-downloader h2,
+.yt .yt-video-downloader h2,
+.yt .yt-playlist-downloader h2 {
+    color: #333;
+}
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.popup-content {
+    padding: 20px;
+}
+
+.submitButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #218838;
+}
+
+#linkInput {
+    width: calc(100% - 40px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+
+
+
+#pleaseWaitMessage {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #555;
+}
+
+#videoThumbnail {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#videoTitle {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+}
+
+#downloadButton {
+    display: block;
+    margin: 20px auto; /* Center the download button */
+    width: fit-content; /* Adjust width to fit content */
+    background-color: #28a745; /* Green color */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+#downloadButton:hover {
+    background-color: #218838; /* Darker green color on hover */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #d9dcd8;
+}
+#downloadAnotherButton {
+    display: none; /* Initially hide the button */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Add some top margin */
+    transition: background-color 0.3s ease;
+}
+
+#downloadAnotherButton:hover {
+    background-color: #0056b3;
+}
+
+#convertButton {
+    display: none; /* Initially hide the button */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Add some top margin */
+    transition: background-color 0.3s ease;
+
+    /* Center the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#convertButton:hover {
+    background-color: #0056b3;
+}
+.open-popup-button {
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Add top margin */
+}
+
+.open-popup-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+#popupTitle {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/**************************LOGIN CSS***************************/
+#body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #191539, #302b63, #24243e);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Align items vertically */
+}
+
+.login-box,
+.register-box {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 5px 20px 50px #000;
+    background-color: #573b8a;
+    text-align: center;
+    width: 300px;
+    position: relative; /* Position relative for absolute positioning of the icon */
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+    animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-box img,
+.register-box img {
+    width: 50px;
+    height: 40px;
+    display: block;
+    margin: 0 auto 20px; /* Center the image below the heading with some space */
+}
+
+.hidden {
+    display: none;
+}
+
+.login-box h2,
+.register-box h2 {
+    margin-top: 0;
+    color: #ffffff;
+    text-align: center; /* Center align the heading */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; /* Change label color to white */
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="email"],
+.input-group input[type="date"] {
+    width: calc(100% - 16px); /* 16px for padding */
+    padding: 8px;
+    border: none;
+    border-radius: 20px; /* Add border-radius for rounded corners */
+    font-size: 14px;
+    transition: border-color 0.3s ease; /* Smooth transition for input focus */
+    background-color: #ffffff; /* Set input background color to white */
+    color: #333; /* Set input text color to black */
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="password"]:focus,
+.input-group input[type="email"]:focus,
+.input-group input[type="date"]:focus {
+    border-color: #007bff; /* Change border color on focus */
+}
+
+.buttons {
+    margin-top: 35px; /* Add margin between boxes and buttons */
+    display: flex;
+    justify-content: center; /* Center align buttons */
+}
+
+.buttons button {
+    padding: 12px 24px; /* Add padding to buttons */
+    margin-right: 10px; /* Add margin between buttons */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #6f42c1; /* Cool color for buttons */
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background and box shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+.buttons button.active {
+    background-color: #0056b3;
+}
+
+.buttons button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"],
+.register-box input[type="text"],
+.register-box input[type="password"],
+.register-box input[type="email"],
+.register-box input[type="date"] {
+    margin-bottom: 15px;
+}
+/* Animation for placeholders */
+.input-group input[type="text"]::placeholder,
+.input-group input[type="password"]::placeholder,
+.input-group input[type="email"]::placeholder,
+.input-group input[type="date"]::placeholder {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+}
+
+.input-group input[type="text"]:focus::placeholder,
+.input-group input[type="password"]:focus::placeholder,
+.input-group input[type="email"]:focus::placeholder,
+.input-group input[type="date"]:focus::placeholder {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.login-box button[type="submit"],
+.register-box button[type="submit"] {
+    width: 100%;
+    padding: 12px 24px; /* Add padding to buttons */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #6f42c1; /* Cool color for buttons */
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background and box shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+.login-box button[type="submit"]:hover,
+.register-box button[type="submit"]:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
+}
+
+.user-icon {
+    font-size: 32px; /* Adjust icon size as needed */
+    margin-bottom: 20px; /* Add space between icon and boxes */
+}
+.alert {
+    background-color: #f8d7da; /* Red background color */
+    color: #721c24; /* Dark red text color */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Bottom margin to create space between alerts */
+    font-size: 16px; /* Font size */
+    border: 1px solid #f5c6cb; /* Red border */
+  }
+  
+  .alert-success {
+    background-color: #d4edda; /* Green background color */
+    color: #155724; /* Dark green text color */
+    border-color: #c3e6cb; /* Green border */
+  }
+  
+  .alert-error {
+    background-color: #f8d7da; /* Red background color */
+    color: #721c24; /* Dark red text color */
+    border-color: #f5c6cb; /* Red border */
+  }
+  /* Style for the password toggle icon */
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 30px; /* Adjust the right positioning as needed */
+    top: 70%;
+    transform: translateY(-50%);
+    color: #000000;
+  }
+  
+
+  /* Style for the password toggle icon within the register form */
+#register-box .toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 30px; /* Adjust the right positioning as needed */
+    top: 80%;
+    transform: translateY(-50%);
+    color: #000000;
+}
+
+/* Style for the logout button */
+#logoutButton {
+    background-color: #f44336; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the logout button */
+#logoutButton:hover {
+    background-color: #d32f2f; /* Darker red color on hover */
+}
+
+/* Optional: Center the logout button */
+#logoutButtonContainer {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed */
+}
+        /* Style for modal dialog */
+        .modal-dialog {
+            max-width: 400px;
+        }
+
+        /* Style for modal content */
+        .modal-content {
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* Style for modal header */
+        .modal-header {
+            border-bottom: none;
+            background-color: #007bff; /* Bootstrap primary color */
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Style for modal body */
+        .modal-body {
+            padding: 20px;
+            background-color: #f8f9fa; /* Bootstrap light gray color */
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Style for modal footer */
+        .modal-footer {
+            border-top: none;
+            background-color: #f8f9fa; /* Bootstrap light gray color */
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Style for modal title */
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Style for modal close button */
+        .modal-header .close {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        /* Style for modal message */
+        #popupMessage {
+            font-size: 1.2rem;
+        }
+
+        /* Style for login button */
+        .btn-login {
+            background-color: #007bff; /* Bootstrap primary color */
+            border: none;
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3; /* Darker shade of primary color */
+        }
