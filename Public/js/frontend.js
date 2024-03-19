@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Initialize Flatpickr for inline calendar inside the "Calendar" div
 });
-window.addEventListener('load', async () => {
+
+
+/*window.addEventListener('load', async () => {
     try {
         // Retrieve the JWT token from local storage
         const token = localStorage.getItem('authToken');
@@ -45,7 +47,7 @@ window.addEventListener('load', async () => {
 function redirectToLogin() {
     window.location.href = '/login';
 }
-
+*/
 
 $(document).ready(function() {
     // Get authentication token from cookie
